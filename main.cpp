@@ -22,7 +22,6 @@ int scoremax;         //历史最高分
 char name[20]; //这里一个指针变量来接受返回的地址
 char namemax[100];
 
-
 //*******函数*******
 
 void init()       //【初始化函数】
@@ -63,18 +62,9 @@ void Login()      //【登录函数】
 		m = GetMouseMsg();                             //获得鼠标信息	
 		if(m.uMsg==WM_LBUTTONDOWN )                    // 判断是否按下鼠标
 	    	if(m.x >= 530 && m.x <= 735 && m.y >= 550 && m.y <= 610)//判断鼠标是否按下区域为"开始游戏"区域
-			{
-                    
-					//char temp[20];
-                  	inputbox_getline("玩家姓名输入","请输入您的大名",name,20);
-
-
-				   /*PIMAGE imgmain=newimage(250,250);
-                	getimage(imgmain,"2048/main.png",0,0);
-                	putimage(0,0,250,250,imgmain,0,0);
-		                //*/	
-					break;
-					
+			{  
+                inputbox_getline("玩家姓名输入","请输入您的大名",name,20);	
+                break;	
 			}
 	        else if(m.x >= 530 && m.x <= 735 && m.y >=615 && m.y <= 655)//判断鼠标按下区域是否是"退出游戏区域"
 			{
@@ -392,9 +382,7 @@ int _Esc()    //【中途退出函数】
 	outtextxy(230,265,"历史最高分:");    
     sprintf(s2,"%d",scoremax);        //将整数最高分转化为字符串并显示
     outtextxy(505,265,s2);
-//	outtextxy(230,520, e);  //显示字符"退出游戏"
-outtextrect( 230, 520, 555, 580, e);  //显示字符"退出游戏"
-	
+    outtextrect( 230, 520, 555, 580, e);  //显示字符"退出游戏"
 
     MOUSEMSG m;                           //判断鼠标操作（是否退出游戏）
 	while(m.uMsg)
@@ -405,7 +393,7 @@ outtextrect( 230, 520, 555, 580, e);  //显示字符"退出游戏"
 		case WM_LBUTTONDOWN:
 			 if(m.x>230&&m.x<555&&m.y>520&&m.y<580)
 			 {
-			 closegraph();
+			    closegraph();
 			 }
 		}
 	}
@@ -445,7 +433,7 @@ void add_number()   //【增加随机方块并判断是否失败函数】
 		  {  
             if (a[i][j] == a[i][j + 1] ||a[i][j] == a[i + 1][j])
 			{
-			 loss=0;
+			    loss=0;
 			}
 		  }
 		}
@@ -538,16 +526,12 @@ int  main()         //【主函数】
 
     Login();                          //登录
 
-    
-
     initgraph(740, 770);              //初始化游戏界面
     PIMAGE imp;
     imp = newimage();
     getimage(img, "2048/背景.jpg");
     putimage(0, 30, imp);             //初始化游戏背景图
     draw();                           //刷新图片
-
-	
 
 	duqu ();                 //读取最高分
     for (; is_run(); delay_fps(30))
@@ -573,11 +557,9 @@ int  main()         //【主函数】
 			outtextxy(182,550,"历史最高分：");
 			outtextxy(400,550,s2);
             
-			zuigaofen();
-			
+			zuigaofen();	
 		}
     }
-    
 	return 0;
 }
 
